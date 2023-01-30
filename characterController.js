@@ -6,27 +6,58 @@ class CharacterController {
         this.x = 10;
         this.y = 500;
         this.speed = 0;
+        this.velocity = { x: 0, y: 0 };
+        this.gravity = 300;
+
+        this.state = "WALK";
+        this.dead = false;
 
         this.animationList = [];
-        this.getAnimations;
-        //this.game.addEntity(newBackground(this.game));
 
-        this.animator = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 1573, 575, 532, 9, 0.09);
-        //this.animationList["WALK"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 1573, 573, 532, 9, 0.09);
         
-       
 
+        //this.animator = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 1573, 575, 532, 9, 0.09);
+        this.animationList["WALK"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 1573, 573, 532, 9, 0.09);
+        this.animationList["JUMP"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 533, 573, 532, 9, 0.09);
 
+        
     };
 
     update() {
-        this.x += this.speed * this.game.clockTick
-        if(this.x > 1024) this.x = 0;
+        const MAXRUN = 100;
+
+        if(this.y > 500) {
+            if(this.state=="JUMP"){
+                this.state="WALK";
+            }
+            this.y = 500;
+            this.velocity.y = 0;
+            this.animationList["JUMP"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 533, 573, 532, 14, 0.18);
+            this.elapsedTime = 0
+            this.state = "WALK";
+                
+            
+        };
+
+        if (this.game.keys["w"] && this.state != "JUMP") {
+            this.state = "JUMP";
+            console.log("Shadow dog is jumping!");
+            
+            this.velocity.x += 0;
+            this.velocity.y -= 350;
+
+        }
+        this.velocity.y += this.gravity*this.game.clockTick;
+        this.x += this.velocity.x*this.game.clockTick;
+        this.y += this.velocity.y*this.game.clockTick;
 
     };
 
     draw(ctx) {
-        this.animator.drawFrame(this.game.clockTick, ctx, this.x, this.y);
-        //ctx.drawImage(ASSET_MANAGER.getAsset("./deathscythewalk.png"),0,0);
+
+        if(this.dead === false) {
+            this.animationList[this.state].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+        } 
+
     };
 }

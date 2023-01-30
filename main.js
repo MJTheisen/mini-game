@@ -4,7 +4,6 @@ const ASSET_MANAGER = new AssetManager();
 
 [
 	"./Sprites/night_time.png",
-	"./Sprites/deathscythewalk.png",
 	"./Sprites/shadow_dog.png"
 ].forEach(asset => ASSET_MANAGER.queueDownload(asset));
 
