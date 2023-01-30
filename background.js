@@ -4,7 +4,7 @@ class Background{
         this.x = 0;
         this.y = 0;
 
-        this.speed = 2
+        this.speed = 3
     }
 
     update(){
@@ -15,7 +15,7 @@ class Background{
 
     draw(ctx){
         ctx.drawImage(ASSET_MANAGER.getAsset("./Sprites/night_time.png"),this.x ,this.y, 1520, 768,);
-        ctx.drawImage(ASSET_MANAGER.getAsset("./Sprites/night_time.png"),this.x+1519, this.y, 1520, 768,);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./Sprites/night_time.png"),this.x+1520, this.y, 1520, 768,);
 
 
 
