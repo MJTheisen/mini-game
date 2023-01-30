@@ -19,7 +19,7 @@ class Animator {
             this.xStart + this.width * frame, this.yStart,
             this.width, this.height,
             x, y,
-            this.width * 4, this.height * 4);
+            this.width /3, this.height/3);
 
 
     };

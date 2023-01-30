@@ -3,13 +3,21 @@ class Background{
         this.game = game;
         this.x = 0;
         this.y = 0;
+
+        this.speed = 2
     }
 
     update(){
+        this.x -= this.speed;
+        if (this.x < 0 - 1520) {this.x = 0};
       
     }
 
     draw(ctx){
-        ctx.drawImage(ASSET_MANAGER.getAsset("./Sprites/bridge.png"), this.x, this.y, 1920, 768,);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./Sprites/night_time.png"),this.x ,this.y, 1520, 768,);
+        ctx.drawImage(ASSET_MANAGER.getAsset("./Sprites/night_time.png"),this.x+1519, this.y, 1520, 768,);
+
+
+
     }
 }
