@@ -12,8 +12,8 @@ class CharacterController {
         this.dead = false;
 
         this.animationList = [];
-        this.animationList["WALK"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 1573, 573, 532, 9, 0.09);
-        this.animationList["JUMP"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 533, 573, 532, 9, 0.09);
+        this.animationList["WALK"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 1573, 573, 532, 9, 0.09, (1/3));
+        this.animationList["JUMP"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 533, 573, 532, 9, 0.09, (1/3));
     };
 
     update() {
@@ -23,7 +23,7 @@ class CharacterController {
             }
             this.y = 500;
             this.velocity.y = 0;
-            this.animationList["JUMP"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 533, 573, 532, 14, 0.18);
+            this.animationList["JUMP"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 533, 573, 532, 14, 0.18, (1/3));
             this.elapsedTime = 0
             this.state = "WALK";
         };
