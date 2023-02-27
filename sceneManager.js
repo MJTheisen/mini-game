@@ -22,10 +22,7 @@ class SceneManager{
         this.player.y = y;
         this.player.velocity = { x: 0, y: 0 };
         this.game.addEntity(this.player); 
-        this.game.addEntity(new Ghost(this.game,400,500));
-        this.game.addEntity(new Ghost(this.game,500,500));
-        this.game.addEntity(new Ghost(this.game,600,500));
-        this.game.addEntity(new Ghost(this.game,700,500));
+
           
        
     };
@@ -45,8 +42,7 @@ class SceneManager{
     // };
 
     update() {
-        this.game.addEntity(new Ghost(this.game,500,500));
-
+        
         //this.GhostSpawn();
         //this.game.addEntity(new Ghost(this.game,500,500))
         // if(this.elapsedGhostTime > this.ghostSpawns[this.randomGhostSpawn]&& this.player.dead==false){

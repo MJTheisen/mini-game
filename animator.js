@@ -1,6 +1,6 @@
 class Animator {
-    constructor(spritesheet, xStart, yStart, width, height, frameCount, frameDuration, scale = 1) {
-        Object.assign(this, { spritesheet, xStart, yStart, width, height, frameCount, frameDuration, scale })
+    constructor(spritesheet, xStart, yStart, width, height, frameCount, frameDuration, scale = 1, spriteBorderWidth = 0) {
+        Object.assign(this, { spritesheet, xStart, yStart, width, height, frameCount, frameDuration, scale, spriteBorderWidth })
         
         this.elapsedTime = 0;
         this.totalTime = frameCount * frameDuration;
@@ -16,8 +16,8 @@ class Animator {
         
 
         ctx.drawImage(this.spritesheet, 
-            this.xStart + this.width * frame, this.yStart,
-            this.width, this.height,
+            this.xStart + (this.width + this.spriteBorderWidth) * frame, this.yStart,
+            (this.width - this.spriteBorderWidth), this.height,
             x, y,
             this.width * this.scale, this.height * this.scale);
 

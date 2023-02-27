@@ -1,7 +1,7 @@
 class Ghost{
     constructor(game , x, y){
         Object.assign(this,{game, x, y});
-        this.x=500;
+        this.x=700;
         this.y=500;
         this.velocity = { x: 0, y:0};
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites/ghost.png");
@@ -10,7 +10,7 @@ class Ghost{
         this.animationList = [];  
         this.dead = false;     
                                                   //spritesheet,xStart, yStart, width, height, frameCount, frameDuration, scale)
-        this.animationList["FLOAT"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/ghost.png"), 0, 0, 65, 65, 18, 0.09, 5);
+        this.animationList["FLOAT"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/ghost.png"), 10, 0, 57.5, 65, 18, 0.07, 2, 2);
     }
 
     
@@ -22,8 +22,7 @@ class Ghost{
     draw(ctx){
         if(this.dead === false) {
             //ctx.drawImage(this.spritesheet, 
-                                                  //(this.xStart + this.width * frame), (this.yStart), this.width, this.height, x, y, this.width /3, this.height/3);
-            this.animationList[this.state].drawFrame(this.game.clockTick, ctx, this.x, this.y,this.x,this.y,this.width *6, this.height*6);
+            this.animationList[this.state].drawFrame(this.game.clockTick, ctx, this.x, this.y);
         } 
 
    
