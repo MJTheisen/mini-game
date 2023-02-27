@@ -38,7 +38,6 @@ class CharacterController {
         this.x += this.velocity.x*this.game.clockTick;
         this.y += this.velocity.y*this.game.clockTick;
 
-        this.game.addEntity(new Ghost(this.game,500,500))
     };
 
     draw(ctx) {
