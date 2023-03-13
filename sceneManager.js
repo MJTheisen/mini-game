@@ -22,6 +22,7 @@ class SceneManager{
         this.player.y = y;
         this.player.velocity = { x: 0, y: 0 };
         this.game.addEntity(this.player); 
+        //this.game.addEntity(this.addEntity(Ghost));
 
           
        

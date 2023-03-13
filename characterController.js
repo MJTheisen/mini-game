@@ -19,7 +19,7 @@ class CharacterController {
     
     updateBB() {
         this.lastBB = this.BB
-        this.BB = new BoundingBox(this.game, this.x, this.y,this.width,this.height)
+        this.BB = new BoundingBox(this.x + 50, this.y + 30, 100, 120)
 
     }
     update() {
@@ -55,5 +55,6 @@ class CharacterController {
             this.BB.draw(ctx);
 
         } 
+        
     };
 }
