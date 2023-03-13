@@ -1,8 +1,8 @@
 class Ghost{
     constructor(game , x, y){
         Object.assign(this,{game, x, y});
-        this.x=1500;
-        this.y=500;
+        this.x=x;
+        this.y=x;
         this.velocity = { x: 0, y:0};
         this.spritesheet = ASSET_MANAGER.getAsset("./Sprites/ghost.png");
         this.speed = 200;
@@ -30,7 +30,6 @@ class Ghost{
 
     draw(ctx){
         if(this.dead === false) {
-            //ctx.drawImage(this.spritesheet, 
             this.animationList[this.state].drawFrame(this.game.clockTick, ctx, this.x, this.y);
             this.BB.draw(ctx);
         } 
