@@ -11,6 +11,7 @@ class CharacterController {
         this.state = "WALK";
         this.dead = false;
 
+        this.updateBB();
         this.animationList = [];
         this.animationList["WALK"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 1573, 573, 532, 9, 0.09, (1/3),0);
         this.animationList["JUMP"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 533, 573, 532, 9, 0.09, (1/3),0);
@@ -38,11 +39,20 @@ class CharacterController {
         this.x += this.velocity.x*this.game.clockTick;
         this.y += this.velocity.y*this.game.clockTick;
 
+        this.updateBB();
     };
+
+    updateBB() {
+        this.lastBB = this.BB
+        this.BB = new BoundingBox(this.game, this.x, this.y)
+
+    }
 
     draw(ctx) {
         if(this.dead === false) {
             this.animationList[this.state].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+            this.BB.draw(ctx);
+
         } 
     };
 }

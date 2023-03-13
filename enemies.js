@@ -9,6 +9,7 @@ class Ghost{
         this.state = "FLOAT";
         this.animationList = [];  
         this.dead = false;     
+        this.updateBB();
                                                   //spritesheet,xStart, yStart, width, height, frameCount, frameDuration, scale, spriteBorderWidth)
         this.animationList["FLOAT"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/ghost.png"), 10, 0, 57.5, 65, 18, 0.07, 1.5, 2);
     }
@@ -17,15 +18,20 @@ class Ghost{
     update(){  
         this.state = "FLOAT";
         this.x -= (this.speed * this.game.clockTick);    
+        this.updateBB();
+
+    }
+
+    updateBB(){
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.game, this.x, this.y)
     }
     
     draw(ctx){
         if(this.dead === false) {
             //ctx.drawImage(this.spritesheet, 
             this.animationList[this.state].drawFrame(this.game.clockTick, ctx, this.x, this.y);
+            this.BB.draw(ctx);
         } 
-
-   
     }
-    
 }
