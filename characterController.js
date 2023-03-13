@@ -54,7 +54,11 @@ class CharacterController {
             this.animationList[this.state].drawFrame(this.game.clockTick, ctx, this.x, this.y);
             this.BB.draw(ctx);
 
-        } 
+        } else {
+            this.game.background.halt = true;
+            this.game.camera.clearEntities();
+            this.game.addEntity(new GameOverMenu(this.game));
+        }
         
     };
 }
