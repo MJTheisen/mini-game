@@ -42,7 +42,6 @@ class SceneManager{
     // };
 
     update() {
-        
         //this.GhostSpawn();
         //this.game.addEntity(new Ghost(this.game,500,500))
         // if(this.elapsedGhostTime > this.ghostSpawns[this.randomGhostSpawn]&& this.player.dead==false){
@@ -57,7 +56,6 @@ class SceneManager{
         if(this.dead === false) {
             this.animationList[this.state].drawFrame(this.game.clockTick, ctx, this.x, this.y);
         } 
-        
 
     };
 

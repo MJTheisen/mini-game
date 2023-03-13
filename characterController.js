@@ -16,7 +16,12 @@ class CharacterController {
         this.animationList["WALK"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 1573, 573, 532, 9, 0.09, (1/3),0);
         this.animationList["JUMP"] = new Animator(ASSET_MANAGER.getAsset("./Sprites/shadow_dog.png"), 0, 533, 573, 532, 9, 0.09, (1/3),0);
     };
+    
+    updateBB() {
+        this.lastBB = this.BB
+        this.BB = new BoundingBox(this.game, this.x, this.y,this.width,this.height)
 
+    }
     update() {
         if(this.y > 500) {
             if(this.state=="JUMP"){
@@ -42,11 +47,7 @@ class CharacterController {
         this.updateBB();
     };
 
-    updateBB() {
-        this.lastBB = this.BB
-        this.BB = new BoundingBox(this.game, this.x, this.y)
 
-    }
 
     draw(ctx) {
         if(this.dead === false) {

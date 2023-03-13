@@ -15,6 +15,11 @@ class Ghost{
     }
 
     
+    updateBB(){
+        this.lastBB = this.BB;
+        this.BB = new BoundingBox(this.game, this.x, this.y,this.width,this.height)
+    }
+
     update(){  
         this.state = "FLOAT";
         this.x -= (this.speed * this.game.clockTick);    
@@ -22,11 +27,7 @@ class Ghost{
 
     }
 
-    updateBB(){
-        this.lastBB = this.BB;
-        this.BB = new BoundingBox(this.game, this.x, this.y)
-    }
-    
+
     draw(ctx){
         if(this.dead === false) {
             //ctx.drawImage(this.spritesheet, 
